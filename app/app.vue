@@ -1,6 +1,6 @@
 <style>
     html{
-        background: red;
+        background-color: red;
     }
 </style>
 

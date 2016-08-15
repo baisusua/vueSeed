@@ -1,18 +1,18 @@
-var express    = require('express');
-var webpack    = require('webpack');
-var config_dev = require('./config_dev');
+var express  = require('express');
+var webpack  = require('webpack');
+var config   = require('./config/dev');
 
-var app = new express();
-
-var compiler = webpack(config_dev);
+var app      = express();
+var compiler = webpack(config);
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
-    publicPath: config_dev.output.publicPath,
+    publicPath: config.output.publicPath,
     stats: {
         colors: true,
         chunks: false
     }
 });
+
 var hotMiddleware = require('webpack-hot-middleware')(compiler);
 
 compiler.plugin('compilation', function (compilation) {
@@ -21,16 +21,16 @@ compiler.plugin('compilation', function (compilation) {
         hotMiddleware.publish({ action: 'reload' })
         cb()
     })
-})
-
+});
 
 app.use(devMiddleware);
+
 app.use(hotMiddleware);
 
-app.listen(8888, function (err) {
+app.listen(3000, function (err) {
     if (err) {
         console.log(err)
         return
     }
-    console.log('Listening at http://localhost:8888')
+    console.log('Listening at http://localhost:3000')
 });
