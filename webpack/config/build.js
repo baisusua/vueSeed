@@ -2,14 +2,16 @@ var path = require('path');
 var webpack           = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var clean = require('clean-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var entry = require('./entry');
 
 module.exports = {
     devtool: false,
-	entry: path.resolve(__dirname, '../../app/app.js'),
+	entry: entry.build,
 	output: {
         path: path.resolve(__dirname, '../../build'),
         publicPath: '/',
-        filename: 'index.[hash].js',
+        filename: '[name].[hash].js',
         chunkFilename: '[id].[chunkhash].js'
     },
 	resolve: {
@@ -24,6 +26,9 @@ module.exports = {
             {test: /\.js$/,loader: 'babel?presets=es2015',exclude: /node_modules/}
         ]
     },
+    vue: {
+        loaders: {css: ExtractTextPlugin.extract("css")}
+    },
     plugins: [
         new clean('build',{
             root: path.resolve(__dirname, '../../')
@@ -31,7 +36,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: path.resolve(__dirname, '../../app/index.html'),
-            inject: true
-        })
+            chunks: ['app']
+        }),
+        new ExtractTextPlugin("css/[name].[contenthash].css"),
     ]
 }

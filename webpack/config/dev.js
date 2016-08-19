@@ -1,9 +1,10 @@
 var path = require('path');
 var webpack           = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var entry = require('./entry');
 
 module.exports = {
-	entry: ['./webpack/dev-client', path.resolve(__dirname, '../../app/app.js')],
+	entry: entry.dev,
 	output: {
         path: path.resolve(__dirname, '../../dev'),
         publicPath: '/',

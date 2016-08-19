@@ -1,24 +1,22 @@
-<style>
+<style scoped>
     html{
         background-color: red;
     }
-    .color_1{
+    .color_3{
         color:#fff;
     }
 
 </style>
 
 <template>
-    <div class="color_1" v-for="n in 10">{{msg}}</div>
-    <router-view></router-view>
+    <div class="color_3" v-for="n in 10">{{msg}}</div>
 </template>
 
 <script>
     export default {
-        replace: false,
         data () {
             return {
-                msg: 'Hello World!'
+                msg: 'LoginLoginLoginLoginLoginLoginLoginLogin!'
             }
         }
     }
