@@ -1,16 +1,26 @@
 <style>
-    html{
-        background-color: red;
-    }
-    .color_1{
-        color:#fff;
-    }
-
+   @import './libs/css/cssreset.min.css';
+   #app{
+        width: 100%;
+        height: 100%;
+   }
+   html,body{
+        width: 100%;
+        height: 100%;
+   }
+   .AppWarp{
+        background-image: url(./images/background.jpg);
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-size: cover;
+   }
 </style>
 
 <template>
-    <div class="color_1" v-for="n in 10">{{msg}}</div>
-    <router-view></router-view>
+    <div class="AppWarp">
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>

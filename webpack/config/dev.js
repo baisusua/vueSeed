@@ -4,6 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var entry = require('./entry');
 
 module.exports = {
+    devtool: 'source-map',
 	entry: entry.dev,
 	output: {
         path: path.resolve(__dirname, '../../dev'),
@@ -20,7 +21,8 @@ module.exports = {
     module: {
         loaders: [
         	{test: /\.vue$/, loader: 'vue'},
-            {test: /\.js$/,loader: 'babel?presets=es2015',exclude: /node_modules/}
+            {test: /\.js$/,loader: 'babel?presets=es2015',exclude: /node_modules/},
+            {test: /\.(jpg|png)$/, loader: "url?limit=512&name=./images/[name].[ext]"},
         ]
     },
     plugins: [
