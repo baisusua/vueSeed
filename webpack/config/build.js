@@ -24,7 +24,7 @@ module.exports = {
         loaders: [
         	{test: /\.vue$/, loader: 'vue'},
             {test: /\.js$/,loader: 'babel?presets=es2015',exclude: /node_modules/},
-            {test: /\.(jpg|png)$/, loader: "url?limit=512&name=./images/[name]-[hash].[ext]"},
+            {test: /\.(jpg|png)$/, loader: "url?limit=512&name=./images/[name]-[hash].[ext]"}
         ]
     },
     vue: {
